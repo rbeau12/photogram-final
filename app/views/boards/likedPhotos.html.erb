@@ -60,7 +60,7 @@
   </tr>
 
 
-<%=@the_user.liked_photos.each do |the_photo|%>
+<%@the_user.liked_photos.each do |the_photo|%>
 
   <tr>
     <td>
@@ -68,7 +68,7 @@
     </td>
 
     <td>
-      <%=the_photo.owner%>
+      <%=the_photo.owner.username%>
     </td>
 
     <td>

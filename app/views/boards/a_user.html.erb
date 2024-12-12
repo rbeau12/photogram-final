@@ -39,7 +39,7 @@
 </nav>
 
 
-<h2>Own photos (COUNT)</h2>
+<h2>Own photos (<%=@the_user.photos.count%>)</h2>
 
 <table border="1">
   <tr>
@@ -62,7 +62,7 @@
   </tr>
 
 
-<%=@the_user.photos.each do |the_photo|%>
+<%@the_user.photos.each do |the_photo|%>
 
   <tr>
     <td>
@@ -70,7 +70,7 @@
     </td>
 
     <td>
-      <%=the_photo.owner%>
+      <%=the_photo.owner.username%>
     </td>
 
     <td>

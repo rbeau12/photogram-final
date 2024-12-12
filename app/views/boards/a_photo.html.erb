@@ -11,7 +11,7 @@
 
   <dt>Owner</dt>
   <dd>
-    <%=@the_photo.owner%>
+    <%=@the_photo.owner.username%>
   </dd>
 
   <dt>Posted</dt>
@@ -23,7 +23,7 @@
   <dd><%=@the_photo.likes_count%></dd>
 
   <dt>Comments count</dt>
-  <dd><%=@the_photo.comment_count%></dd>
+  <dd><%=@the_photo.comments_count%></dd>
 
   <dt>Fans</dt>
   <dd>
@@ -67,7 +67,7 @@
         over 5 years ago
       </td>
     </tr> 
-
+<%end%>
 
 
 <h3>Add a new comment</h3>

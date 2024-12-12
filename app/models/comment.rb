@@ -17,7 +17,6 @@
 # Foreign Keys
 #
 #  fk_rails_...  (author_id => users.id)
-#  fk_rails_...  (photo_id => photos.id) ON DELETE => cascade
 #
 class Comment < ApplicationRecord
   belongs_to :author_id

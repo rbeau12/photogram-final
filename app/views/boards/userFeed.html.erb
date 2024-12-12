@@ -37,7 +37,17 @@
     </li>
   </ul>
 </nav>
-<h2>Liked Photos (COUNT)</h2>
+<%count=0%>
+<%@real_following.each do |the_request|%>
+<%the_follow=User.where({:id=>the_request.recipient_id}).at(0)%>
+<%the_follow.photos.each do |the_photo| %>
+  <%count=count+1%>
+<%end%>
+<%end%>
+
+
+
+<h2>Liked Photos (<%=count%>)</h2>
 
 <table border="1">
   <tr>
@@ -70,7 +80,7 @@
       </td>
 
       <td>
-        <%=the_photo.owner%>
+        <%=the_photo.owner.username%>
       </td>
 
       <td>

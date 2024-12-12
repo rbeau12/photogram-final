@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_12_204531) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_12_204927) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,11 +71,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_12_204531) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "comments", "photos", on_delete: :cascade
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "follow_requests", "users", column: "recipient_id", on_delete: :cascade
   add_foreign_key "follow_requests", "users", column: "sender_id", on_delete: :cascade
-  add_foreign_key "likes", "photos", on_delete: :cascade
   add_foreign_key "likes", "users", column: "fan_id"
   add_foreign_key "photos", "users", column: "owner_id"
 end
