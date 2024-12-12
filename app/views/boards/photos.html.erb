@@ -1,0 +1,42 @@
+<h1>List of photos</h1>
+<table border="1">
+  <tr>
+    <th>Image</th>
+    <th>Caption</th>
+    <th>Owner</th>
+    <th>Posted</th>
+    <th>Likes</th>
+    <th></th>
+  </tr>
+<% @list_of_photos.each do |image1|%>
+
+
+  <tr>
+        <td>
+          <img src="<%= image1.image%>" class="img-responsive">
+        </td>
+      
+        <td>
+          <%= image1.caption%>
+        </td>
+      
+        <td>
+          <%= image1.owner%>
+        </td>
+      
+        <td>
+          <%= @now-image1.created_at%>
+        </td>
+      
+        <td>
+          <%= image1.like_count%>
+        </td>
+      
+        <td>
+          <a href="/photos/<%= image1.id%>">
+            Show details
+          </a>
+        </td>
+  </tr>
+
+<%end%>

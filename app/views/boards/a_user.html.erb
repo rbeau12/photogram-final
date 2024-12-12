@@ -1,0 +1,95 @@
+<h1><%=@the_user.username%></h1>
+
+<dl>
+  <dt>Private</dt>
+  <dd><%=@the_user.private%></dd>
+
+  <dt>Followers</dt>
+  <dd>
+    DO THIS
+
+
+      <div>
+          <a href="/delete_follow_request/2412">
+            Unfollow DO THIS
+          </a>
+    </div>
+
+  </dd>
+
+  <dt>Following</dt>
+  <dd>DO THIS</dd>
+</dl>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/users/<%=@the_user.username%>">Profile</a>
+    </li>
+    <li>
+      <a href="/users/<%=@the_user.username%>/liked_photos">Liked photos</a>
+    </li>
+    <li>
+      <a href="/users/<%=@the_user.username%>/feed">Feed</a>
+    </li>
+    <li>
+      <a href="/users/<%=@the_user.username%>/discover">Discover</a>
+    </li>
+  </ul>
+</nav>
+
+
+<h2>Own photos (COUNT)</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      Image
+    </th>
+    <th>
+      Owner
+    </th>
+    <th>
+      Caption
+    </th>
+    <th>
+      Posted
+    </th>
+    <th>
+      Likes
+    </th>
+    <th></th>
+  </tr>
+
+
+<%=@the_user.photos.each do |the_photo|%>
+
+  <tr>
+    <td>
+      <img src="<%=the_photo.image%>" class="img-responsive">
+    </td>
+
+    <td>
+      <%=the_photo.owner%>
+    </td>
+
+    <td>
+      <%=the_photo.caption%>
+    </td>
+
+    <td>
+      over 5 years ago
+    </td>
+
+    <td>
+      <%=the_photo.likes_count%>
+    </td>
+
+    <td>
+      <a href="/photos/<%=the_photo.id%>">
+        Show details
+      </a>
+    </td>
+  </tr>
+
+<%end%>
