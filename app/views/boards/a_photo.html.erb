@@ -27,7 +27,11 @@
 
   <dt>Fans</dt>
   <dd>
-    <%=@the_photo.fans%>
+    <%the_list=[]%>
+    <%@the_photo.fans.each do |the_fan|%>
+      <%the_list.append(the_fan.username)%>
+    <%end%>
+    <%=the_list%>
   </dd>
 
   <dt>Add a fan</dt>

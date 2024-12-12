@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "boards#index"
-  get("/", { :controller => "boards", :action => "index" })
+  root "boards#users"
+  get("/", { :controller => "boards", :action => "users" })
   get("/users", { :controller => "boards", :action => "users" })
   get("/photos", { :controller => "boards", :action => "photos" })
   get("/photos/:path_id", { :controller => "boards", :action => "showPhoto" })
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   #post("/insert_like")
   #post("/insert_comment")
+  #post("/delete_follow_request")
+  #post("/insert_follow_request")
 
 
 
