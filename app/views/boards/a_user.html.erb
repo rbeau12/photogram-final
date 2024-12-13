@@ -19,13 +19,9 @@
     <%=@real_followers.count%>
 
   <%if following%>
-      <form action="/delete_follow_request" method="post">
-            <input type="hidden" name="query_recipient_id" value=<%=@the_user%>>
 
-            <button>
-              Unfollow
-            </button>
-        </form>
+      <a href="/delete_follow_request?query_recipient_id=<%= @the_user %>" class="button-class" data-method="post" >Unfollow</a>
+
   <%else%>
       <div>
           <form action="/insert_follow_request" method="post">
@@ -100,7 +96,7 @@
     </td>
 
     <td>
-      over 5 years ago
+      Posted <%= time_ago_in_words(the_photo.created_at) %> ago
     </td>
 
     <td>

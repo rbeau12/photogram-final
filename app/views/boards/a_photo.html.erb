@@ -19,7 +19,7 @@
 
   <dt>Posted</dt>
   <dd>
-    over 5 years ago
+    Posted <%= time_ago_in_words(@the_photo.created_at) %> ago
   </dd>
 
   <dt>Likes count</dt>
@@ -38,17 +38,25 @@
   </dd>
 
   <dt>Add a fan</dt>
+  <%if current.user not in @the_photo.fans%>
   <dd>
-
-    <form action="/insert_like" method="post">
+  
+    <form action="/insert_like?photo_id=<%=@the_photo.id%>" method="post">
       <input type="hidden" value="777" name="query_photo_id">
       <button>Like</button>
     </form>
   </dd>
-
+  <%else%>
+    <dd>
+  
+    <form action="/delete_like?photo_id=<%=@the_photo.id%>" method="post">
+      <input type="hidden" value="777" name="query_photo_id">
+      <button>Unlike</button>
+    </form>
+  </dd>
 </dl>
 
-<%if @the_photo.owner==current_user.id%>
+<%if @the_photo.owner.id==current_user.id%>
   <dt>Edit photo</dt>
   <dd>
     <form action="/modify_photo/<%=@the_photo.id%>" method="post">
@@ -70,7 +78,7 @@
 <%end%>
 
 
-<h2>Comments</h2>
+<h2>Comments (<%=Comment.where({:photo_id=>@the_photo}).count%>)</h2>
 <table>
   <tr>
     <th>Commenter</th>
@@ -78,12 +86,11 @@
     <th>Posted</th>
   </tr>
 
-<% @the_photo.comments.each do |the_comment| %>
-
+<% Comment.where({:photo_id=>@the_photo}).each do |the_comment| %>
 
     <tr>
       <td>
-       <%=the_comment.author%>
+       <%=the_comment.author.username%>
       </td>
 
       <td>
@@ -91,7 +98,7 @@
       </td>
 
       <td>
-        over 5 years ago
+        Posted <%= time_ago_in_words(the_comment.created_at) %> ago
       </td>
     </tr> 
 <%end%>

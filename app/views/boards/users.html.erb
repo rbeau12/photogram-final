@@ -29,20 +29,21 @@
 
       <td>
         <%if current_user !=nil%>
-          <%sent_status=current_user.sent_follow_requests.where({:recipient_id=>"user1"})%>
+          <%sent_status=FollowRequest.where({:sender_id=>current_user.id,:recipient_id=>user1.id})%>
           <%if sent_status.count>0%>
             <%if sent_status.at(0).status=="accepted"%>
               <a href="/delete_follow_request/<%=sent_status.at(0).id%>">
               Unfollow
               </a>
             <% else %>
-              Request sent.
+              Request sent
 
               <a href="/delete_follow_request/<%=sent_status.at(0).id%>">
               Cancel
               </a>
             <%end%>
           <% else%>
+              
               <form action="/insert_follow_request" method="post">
               <input type="hidden" name="query_recipient_id" value="<%=user1.id%>">
 

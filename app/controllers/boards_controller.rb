@@ -48,4 +48,14 @@ class BoardsController < ApplicationController
     @real_followings=@the_user.sent_follow_requests.where({:status=>"accepted"})
     render({ :template => "boards/discover" })
   end
+  def like
+    the_like=Like.new
+    the_like.fan_id=current_user.id
+    the_like.photo_id=params.fetch("photo_id")
+    the_like.save
+  end
+  def unlike
+    the_photo=params.fetch("photo_id")
+    the_like=Like.where({fan_id=>current_user.id,photo_id=>the_photo})
+    
 end
