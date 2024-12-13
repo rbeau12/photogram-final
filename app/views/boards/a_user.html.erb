@@ -1,5 +1,10 @@
 <%following=false%>
 <%request_id=100000%>
+<%if (current_user.id==@the_user.id)%>
+  <%FollowRequest.where({:recipient_id=>current_user.id, :status=>"pending"}).each do |the_item|%>
+    <%=the_item.sender.username%>
+  <%end%>
+<%end%>
 <%@real_followers.each do |the_follower|%>
   <%if the_follower.sender_id==current_user.id%>
     <%following=true%>
@@ -20,7 +25,7 @@
 
   <%if following%>
 
-      <a href="/delete_follow_request?query_recipient_id=<%= @the_user %>" class="button-class" data-method="post" >Unfollow</a>
+      <a href="/delete_follow_request?query_recipient_id=<%= @the_user.id%>" class="button-class" data-method="post" >Unfollow</a>
 
   <%else%>
       <div>

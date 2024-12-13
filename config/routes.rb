@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   get("/users/:username/feed", { :controller => "boards", :action => "feed" })
   get("/users/discover", { :controller => "boards", :action => "discover" })
   post("/insert_like", { :controller => "boards", :action => "like" })
-  #post("/insert_comment")
+  post("/delete_like", { :controller => "boards", :action => "unlike" })
+  get("/delete_like", { :controller => "boards", :action => "unlike" })
+  post("/insert_comment", { :controller => "boards", :action => "comment" })
   #post("/delete_follow_request")
   #post("/insert_follow_request")
-  #post("/insert_photo")
+  post("/insert_photo", { :controller => "boards", :action => "newPhoto" })
 
 
 
