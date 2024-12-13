@@ -26,6 +26,8 @@ class BoardsController < ApplicationController
   def showUser
     username=params.fetch("username")
     @the_user=User.where({:username=>username}).at(0)
+    @real_followers=@the_user.received_follow_requests.where({:status=>"accepted"})
+    @real_followings=@the_user.sent_follow_requests.where({:status=>"accepted"})
     render({ :template => "boards/a_user" })
   end
   def likedPhotos

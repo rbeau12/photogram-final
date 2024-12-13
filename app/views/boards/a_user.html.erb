@@ -1,24 +1,46 @@
+<%following=false%>
+<%request_id=100000%>
+<%@real_followers.each do |the_follower|%>
+  <%if the_follower.sender_id==current_user.id%>
+    <%following=true%>
+    <%request_id=the_follower.id%>
+  <%end%>
+<%end%>
+
 <h1><%=@the_user.username%></h1>
 
 <dl>
   <dt>Private</dt>
   <dd><%=@the_user.private%></dd>
 
+
   <dt>Followers</dt>
   <dd>
-    DO THIS
+    <%=@real_followers.count%>
 
+  <%if following%>
+      <form action="/delete_follow_request" method="post">
+            <input type="hidden" name="query_recipient_id" value=<%=@the_user%>>
 
+            <button>
+              Unfollow
+            </button>
+        </form>
+  <%else%>
       <div>
-          <a href="/delete_follow_request/2412">
-            Unfollow DO THIS
-          </a>
-    </div>
+          <form action="/insert_follow_request" method="post">
+            <input type="hidden" name="query_recipient_id" value=<%=@the_user%>>
 
+            <button>
+              Follow
+            </button>
+          </form>
+    </div>
+<%end%>
   </dd>
 
   <dt>Following</dt>
-  <dd>DO THIS</dd>
+  <dd><%=@real_followings.count%></dd>
 </dl>
 
 <nav>
@@ -66,7 +88,7 @@
 
   <tr>
     <td>
-      <img src="<%=the_photo.image%>" class="img-responsive">
+      <img src="<%=the_photo.image%>">
     </td>
 
     <td>

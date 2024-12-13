@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   get("/users/:username/liked_photos", { :controller => "boards", :action => "likedPhotos" })
   get("/users/:username/feed", { :controller => "boards", :action => "feed" })
   get("/users/discover", { :controller => "boards", :action => "discover" })
-
   #post("/insert_like")
   #post("/insert_comment")
   #post("/delete_follow_request")
   #post("/insert_follow_request")
+  #post("/insert_photo")
 
 
 

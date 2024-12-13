@@ -1,3 +1,6 @@
+<h1>Photo Details</h1>
+
+
 <dl>
   <dt>Image</dt>
   <dd>
@@ -45,6 +48,26 @@
 
 </dl>
 
+<%if @the_photo.owner==current_user.id%>
+  <dt>Edit photo</dt>
+  <dd>
+    <form action="/modify_photo/<%=@the_photo.id%>" method="post">
+      <label for="browser_image">Image URL</label>
+      <input id="browser_image" type="text" name="query_image" placeholder="Enter a URL for the image..." value="https://robohash.org/utadesse">
+    
+      <label for="browser_caption">Caption</label>
+      <textarea id="browser_caption" name="query_caption" placeholder="Enter a caption for the photo...">Fear cuts deeper than swords.</textarea>
+    
+      <button>Update photo</button>
+    </form>
+  </dd>
+  <dt>Delete photo</dt>
+  <dd>
+    <a href="/delete_photo/<%=@the_photo.id%>">
+      Delete this photo
+    </a>
+  </dd>
+<%end%>
 
 
 <h2>Comments</h2>
